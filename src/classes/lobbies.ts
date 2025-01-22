@@ -77,7 +77,7 @@ export class Lobby {
 
     verifyVictory():WinningLine | 'DRAW' | undefined{
         //verify horizontal lines
-        for (let i = 0; i < 3; i+=3){
+        for (let i = 0; i < 9; i+=3){
             if (this.board[i] !== '' &&  this.board[i] === this.board[i+1] && this.board[i] === this.board[i+2]){
                 return [i as BoardPosition, i+1 as BoardPosition, i+2 as BoardPosition];
             }
