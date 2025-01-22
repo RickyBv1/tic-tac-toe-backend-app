@@ -4,14 +4,16 @@ import { Server } from 'socket.io';
 import { Lobby } from './classes/lobbies';
 import { CreateLobbyArgs, JoinLobbyArgs} from './interfaces/createLobby';
 import { Socket } from 'socket.io';
+import { config } from 'dotenv';
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server,{cors:{origin:'*'}});
 global.io = io;
+config();
 
-server.listen(3000, () => {
-    console.log('Server running on port 3000');
+server.listen(process.env.PORT || 3000, () => {
+    console.log('Server running on port ', process.env.PORT);
 })
 
 let lobbies:Lobby[] = [];
